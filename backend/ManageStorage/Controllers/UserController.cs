@@ -22,7 +22,7 @@ namespace ManageStorage.Controllers
             return Ok(_context.Users.ToList());
         }
 
-        [HttpPost]
+        [HttpPost("{Add}")]
         public IActionResult Add(User user)
         {
             try
@@ -38,7 +38,7 @@ namespace ManageStorage.Controllers
             }
         }
 
-        [HttpPut]
+        [HttpPut("{Edit}")]
         public IActionResult EditUser(User user)
         {
             try
@@ -67,7 +67,7 @@ namespace ManageStorage.Controllers
             }
         }
 
-        [HttpPut]
+        [HttpPut("{Delete}")]
         public IActionResult Delete(int id)
         {
             try
