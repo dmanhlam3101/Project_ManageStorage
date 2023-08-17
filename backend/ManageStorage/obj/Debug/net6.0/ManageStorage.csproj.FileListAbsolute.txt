@@ -142,3 +142,9 @@ C:\Users\Manh Lam\Desktop\PRN231_Project\backend\ManageStorage\obj\Debug\net6.0\
 C:\Users\Manh Lam\Desktop\PRN231_Project\backend\ManageStorage\obj\Debug\net6.0\ManageStorage.pdb
 C:\Users\Manh Lam\Desktop\PRN231_Project\backend\ManageStorage\obj\Debug\net6.0\ManageStorage.genruntimeconfig.cache
 C:\Users\Manh Lam\Desktop\PRN231_Project\backend\ManageStorage\obj\Debug\net6.0\ref\ManageStorage.dll
+C:\Users\trung\OneDrive\Desktop\PRN231(BL5)\Project_ManageStorage\backend\ManageStorage\bin\Debug\net6.0\Microsoft.AspNetCore.OData.dll
+C:\Users\trung\OneDrive\Desktop\PRN231(BL5)\Project_ManageStorage\backend\ManageStorage\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\trung\OneDrive\Desktop\PRN231(BL5)\Project_ManageStorage\backend\ManageStorage\bin\Debug\net6.0\Microsoft.OData.Core.dll
+C:\Users\trung\OneDrive\Desktop\PRN231(BL5)\Project_ManageStorage\backend\ManageStorage\bin\Debug\net6.0\Microsoft.OData.Edm.dll
+C:\Users\trung\OneDrive\Desktop\PRN231(BL5)\Project_ManageStorage\backend\ManageStorage\bin\Debug\net6.0\Microsoft.OData.ModelBuilder.dll
+C:\Users\trung\OneDrive\Desktop\PRN231(BL5)\Project_ManageStorage\backend\ManageStorage\bin\Debug\net6.0\Microsoft.Spatial.dll
