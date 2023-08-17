@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Layout as LayoutAnt, Breadcrumb, Menu, theme ,Button} from 'antd';
+import { Layout as LayoutAnt, Breadcrumb, Menu, theme, Button } from 'antd';
 import {
 	DesktopOutlined,
 	FileOutlined,
 	PieChartOutlined,
 	TeamOutlined,
 	UserOutlined,
+	HomeOutlined
 } from '@ant-design/icons';
 const { Content, Header, Sider, Footer } = LayoutAnt;
 
@@ -18,14 +19,9 @@ function getItem(label, key, icon, children) {
 	};
 }
 const items = [
-	getItem('Option 1', '1', <PieChartOutlined />),
+	getItem('Storage', '1', <HomeOutlined />),
 	getItem('Option 2', '2', <DesktopOutlined />),
-	getItem('User', 'sub1', <UserOutlined />, [
-		getItem('Tom', '3'),
-		getItem('Bill', '4'),
-		getItem('Alex', '5'),
-	]),
-	getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
+
 	getItem('Files', '9', <FileOutlined />),
 ];
 
@@ -38,19 +34,19 @@ const Layout = ({ title, children }) => {
 	} = theme.useToken();
 	return (
 
-		
-		
+
+
 		<LayoutAnt
 			style={{
 				minHeight: '100vh',
 			}}
 		>
-			<Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-				
-				<div className="demo-logo-vertical img-with-left-padding"  ><img width={collapsed ? '100' : '200'} src='https://www.48hourslogo.com/oss/attachments/2023/01/11/23910145547/c2e7804da10ba06f2e9a2234d32be8e2.png'></img></div>
+			<Sider width={250} collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
 
-				
-				<Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
+				<div className="demo-logo-vertical img-with-left-padding"  ><img width={collapsed ? '100' : '250'} src='https://www.48hourslogo.com/oss/attachments/2023/01/11/23910145547/c2e7804da10ba06f2e9a2234d32be8e2.png'></img></div>
+
+
+				<Menu  theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
 			</Sider>
 			<LayoutAnt>
 				<Header
@@ -60,7 +56,7 @@ const Layout = ({ title, children }) => {
 					}}
 				>
 
-					
+
 				</Header>
 				<Content
 					style={{
@@ -72,13 +68,24 @@ const Layout = ({ title, children }) => {
 							margin: '16px 0',
 						}}
 					>
-						<Breadcrumb.Item>{title}</Breadcrumb.Item>
-						
+						<Breadcrumb.Item>
+							<a
+								style={{
+
+									fontWeight: "bold",
+									fontSize: '30px',
+									color:'red',
+									background: '#f5f5f5'
+								}}>
+								{title}
+							</a>
+						</Breadcrumb.Item>
+
 					</Breadcrumb>
 					<div
 						style={{
 							padding: 24,
-							minHeight: 630,
+							minHeight: 590,
 							background: colorBgContainer,
 						}}
 					>
@@ -95,7 +102,7 @@ const Layout = ({ title, children }) => {
 			</LayoutAnt>
 		</LayoutAnt>
 
-		
+
 	);
 };
 
