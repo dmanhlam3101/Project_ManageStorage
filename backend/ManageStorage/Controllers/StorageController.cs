@@ -52,6 +52,7 @@ namespace ManageStorage.Controllers
                     storage1.Supplier = new SupplierDTO
                     {
                         SupplierId = product.Supplier.SupplierId,
+                        ProductName = product.ProductName,
                         DisplayName = product.Supplier.DisplayName,
                         Address = product.Supplier.Address,
                         Phone = product.Supplier.Phone,
@@ -65,6 +66,26 @@ namespace ManageStorage.Controllers
             }
 
             return Ok(storage);
+        }
+
+        [HttpGet("getSupllierOfProduct/{productId}")]
+        public IActionResult getStorageByProductId(int productId)
+        {
+            var products = _context.Products.Include(o => o.Supplier).FirstOrDefault(p => p.ProductId == productId);
+
+            SupplierDTO supplier = new SupplierDTO
+            {
+                SupplierId = products.Supplier.SupplierId,
+                ProductName = products.ProductName,
+                DisplayName = products.Supplier.DisplayName,
+                Address = products.Supplier.Address,
+                Phone = products.Supplier.Phone,
+                Email = products.Supplier.Email,
+                MoreInfo = products.Supplier.MoreInfo,
+                ContractDate = products.Supplier.ContractDate
+            };
+
+            return Ok(supplier);
         }
     }
 }
