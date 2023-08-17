@@ -22,14 +22,14 @@ namespace ManageStorage.Controllers
             return Ok(_context.Users.ToList());
         }
 
-        [HttpPost]
+        [HttpPost("add")]
         public IActionResult Add(User user)
         {
             try
             {
                 _context.Users.Add(user);
                 int result = _context.SaveChanges();
-                return Ok(result);
+                return Ok(user);
 
             }
             catch
@@ -38,12 +38,12 @@ namespace ManageStorage.Controllers
             }
         }
 
-        [HttpPut]
-        public IActionResult EditUser(User user)
+        [HttpPut("edit/{id}")]
+        public IActionResult EditUser(User user, int id)
         {
             try
             {
-                var us = _context.Users.FirstOrDefault(o => o.UserId == user.UserId);
+                var us = _context.Users.FirstOrDefault(o => o.UserId == id);
 
                 if (us is null)
                 {
@@ -67,7 +67,7 @@ namespace ManageStorage.Controllers
             }
         }
 
-        [HttpPut]
+        [HttpPut("delete")]
         public IActionResult Delete(int id)
         {
             try
