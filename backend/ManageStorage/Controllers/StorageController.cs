@@ -66,5 +66,6 @@ namespace ManageStorage.Controllers
 
             return Ok(storage);
         }
+    
     }
 }

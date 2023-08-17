@@ -38,6 +38,9 @@
 }
 .img-with-left-padding {
   margin-top: -15px;
-  margin-bottom: -20px;
+  margin-bottom: -10px;
 
+}
+.ant-menu-item {
+ font-size: 15px;
 }

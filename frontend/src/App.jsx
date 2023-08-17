@@ -2,7 +2,7 @@
 import './App.css';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Home from './views/Home/Home';
+import Storage from './views/Storage/Storage';
 import Layout from './components/Layout/Layout';
 
 const allRouters = [
@@ -10,10 +10,10 @@ const allRouters = [
 		path: '/',
 		element: (
 
-					<Home />
+					<Storage />
 
 		),
-		title: 'Home',
+		title: 'Storage',
 	},
 ];
 function App() {

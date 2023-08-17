@@ -1,1 +1,1 @@
-export const API_URL_TEST = '/api/Categories';
+export const API_URL_STORAGE = '/api/Storage';
