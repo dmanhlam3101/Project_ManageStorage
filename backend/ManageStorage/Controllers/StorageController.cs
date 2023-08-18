@@ -1,5 +1,6 @@
 ﻿using ManageStorage.DTO;
 using ManageStorage.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,7 @@ namespace ManageStorage.Controllers
         }
 
         [HttpGet]
+        
         public IActionResult Storage()
         {
             var products = _context.Products.Include(o => o.Supplier).ToList();
