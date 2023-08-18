@@ -148,3 +148,4 @@ C:\Users\trung\OneDrive\Desktop\PRN231(BL5)\Project_ManageStorage\backend\Manage
 C:\Users\trung\OneDrive\Desktop\PRN231(BL5)\Project_ManageStorage\backend\ManageStorage\bin\Debug\net6.0\Microsoft.OData.Edm.dll
 C:\Users\trung\OneDrive\Desktop\PRN231(BL5)\Project_ManageStorage\backend\ManageStorage\bin\Debug\net6.0\Microsoft.OData.ModelBuilder.dll
 C:\Users\trung\OneDrive\Desktop\PRN231(BL5)\Project_ManageStorage\backend\ManageStorage\bin\Debug\net6.0\Microsoft.Spatial.dll
+C:\Users\trung\OneDrive\Desktop\PRN231(BL5)\Project_ManageStorage\backend\ManageStorage\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
