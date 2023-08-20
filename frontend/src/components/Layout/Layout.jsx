@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
-import { Layout as LayoutAnt, Breadcrumb, Menu, theme, Button } from 'antd';
+import { Layout as LayoutAnt, Menu, theme, Button } from 'antd';
 import {
-	DesktopOutlined,
-	FileOutlined,
-	PieChartOutlined,
-	TeamOutlined,
-	UserOutlined,
-	HomeOutlined
+	HomeOutlined,
+	FormOutlined
 } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 const { Content, Header, Sider, Footer } = LayoutAnt;
 
 function getItem(label, key, icon, children) {
@@ -19,16 +16,23 @@ function getItem(label, key, icon, children) {
 	};
 }
 const items = [
-	getItem('Storage', '1', <HomeOutlined />),
-	getItem('Option 2', '2', <DesktopOutlined />),
+	{
+		label: <Link to='/storage'>Storage</Link>,
+		key: 'storage',
+		icon:<HomeOutlined />
+	},
+	{
+		label: <Link to='/inputStorage'>Input Storage</Link>,
+		key: 'inputStorage',
+		icon:<FormOutlined />
+	},
 
-	getItem('Files', '9', <FileOutlined />),
+	//getItem('Files', '9', <FileOutlined />),
 ];
 
 const Layout = ({ title, children }) => {
 
 	const [collapsed, setCollapsed] = useState(false);
-	console.log(collapsed)
 	const {
 		token: { colorBgContainer },
 	} = theme.useToken();
@@ -46,7 +50,7 @@ const Layout = ({ title, children }) => {
 				<div className="demo-logo-vertical img-with-left-padding"  ><img width={collapsed ? '100' : '250'} src='https://www.48hourslogo.com/oss/attachments/2023/01/11/23910145547/c2e7804da10ba06f2e9a2234d32be8e2.png'></img></div>
 
 
-				<Menu  theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
+				<Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
 			</Sider>
 			<LayoutAnt>
 				<Header
@@ -63,25 +67,25 @@ const Layout = ({ title, children }) => {
 						margin: '0 16px',
 					}}
 				>
-					<Breadcrumb
+					<div
 						style={{
-							margin: '16px 0',
+							margin: '16px 0px ',
+
 						}}
 					>
-						<Breadcrumb.Item>
-							<a
-								style={{
 
-									fontWeight: "bold",
-									fontSize: '30px',
-									color:'red',
-									background: '#f5f5f5'
-								}}>
-								{title}
-							</a>
-						</Breadcrumb.Item>
 
-					</Breadcrumb>
+						<a
+							style={{
+								fontWeight: 'bold',
+								fontSize: '30px',
+								color: 'red',
+								background: '#f5f5f5',
+							}}
+						>
+							{title}
+						</a>
+					</div>
 					<div
 						style={{
 							padding: 24,
