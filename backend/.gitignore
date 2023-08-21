@@ -1,0 +1,4 @@
+/frontend/node_modules
+
+/backend/ManageStorage/bin
+/backend/ManageStorage/obj
