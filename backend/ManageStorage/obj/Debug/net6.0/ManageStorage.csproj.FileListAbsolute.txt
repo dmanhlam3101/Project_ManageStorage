@@ -226,3 +226,4 @@ C:\Users\Manh Lam\Desktop\Project_ManageStorage\backend\ManageStorage\obj\Debug\
 C:\Users\Manh Lam\Desktop\Project_ManageStorage\backend\ManageStorage\obj\Debug\net6.0\ManageStorage.genruntimeconfig.cache
 C:\Users\Manh Lam\Desktop\Project_ManageStorage\backend\ManageStorage\obj\Debug\net6.0\ref\ManageStorage.dll
 C:\Users\trung\OneDrive\Desktop\PRN231(BL5)\Project_ManageStorage\backend\ManageStorage\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\Manh Lam\Desktop\Project_ManageStorage\backend\ManageStorage\bin\Debug\net6.0\Newtonsoft.Json.dll

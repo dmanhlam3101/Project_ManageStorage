@@ -4,18 +4,19 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Storage from './views/Storage/Storage';
 import EditProduct from './views/Storage/EditProduct';
-
 import Login from './views/Login/Login';
-
 import Layout from './components/Layout/Layout';
 import AddProduct from './views/Storage/AddProduct';
+import AuthGuard from './Guard/AuthGuard';
 
 const allRouters = [
 	{
 		path: '/storage',
 		element: (
+				<AuthGuard>
 
 					<Storage />
+				</AuthGuard>
 
 		),
 		title: 'Storage',
