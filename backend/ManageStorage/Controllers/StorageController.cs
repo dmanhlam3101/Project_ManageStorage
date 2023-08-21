@@ -21,7 +21,7 @@ namespace ManageStorage.Controllers
         
         public IActionResult Storage()
         {
-            var products = _context.Products.Include(o => o.Supplier).ToList();
+            var products = _context.Products.Include(o => o.Supplier).Where(p=> p.Status != false).ToList();
             List<StorageDTO> storage = new List<StorageDTO>();
 
             foreach (var product in products)

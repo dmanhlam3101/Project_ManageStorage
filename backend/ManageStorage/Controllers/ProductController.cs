@@ -1,9 +1,15 @@
-﻿using ManageStorage.Models;
+﻿using AutoMapper;
+using ManageStorage.DTO;
+using ManageStorage.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
 using Microsoft.EntityFrameworkCore;
+<<<<<<< HEAD
 using Newtonsoft.Json;
+=======
+using System.IO;
+>>>>>>> e33d5c8d3deabdfa9ad84ecd1b4ab04598d37eda
 
 namespace ManageStorage.Controllers
 {
@@ -11,10 +17,13 @@ namespace ManageStorage.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
+
         private QuanlykhoContext _context;
-        public ProductController(QuanlykhoContext context)
+        private IMapper _mapper;
+        public ProductController(QuanlykhoContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -49,6 +58,38 @@ namespace ManageStorage.Controllers
 
             var json = JsonConvert.SerializeObject(product, jsonSettings);
             return Ok(json);
+        }
+
+
+        [HttpGet("{id}")]
+        public IActionResult getProductById(int id)
+        {
+            var product = _context.Products.Include(o => o.Supplier).Include(s => s.Unit).FirstOrDefault(p => p.ProductId == id);
+
+            ProductDTO productDTO = new ProductDTO();
+            productDTO.ProductId = product.ProductId;
+            productDTO.ProductName = product.ProductName;
+            productDTO.UnitId = product.UnitId;
+            productDTO.SupplierId = product.SupplierId;
+            productDTO.Status = product.Status;
+            if (product.Supplier != null)
+            {
+                productDTO.Supplier = new SupplierDTO
+                {
+                   SupplierId = product.Supplier.SupplierId,
+                    DisplayName = product.Supplier.DisplayName,
+                };
+            } 
+            if (product.Unit != null)
+            {
+                productDTO.Unit = new UnitDTO
+                {
+                   UnitId = product.Unit.UnitId,
+                    UnitName = product.Unit.UnitName,
+                };
+            }
+
+            return Ok(productDTO);
         }
 
         [HttpPost("add")]
