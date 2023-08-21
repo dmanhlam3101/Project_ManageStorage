@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Manh Lam\\Desktop\\Project_ManageStorage\\backend\\ManageStorage\\ManageStorage.csproj": {}
+    "C:\\Users\\trung\\OneDrive\\Desktop\\PRN231(BL5)\\Project_ManageStorage\\backend\\ManageStorage\\ManageStorage.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Manh Lam\\Desktop\\Project_ManageStorage\\backend\\ManageStorage\\ManageStorage.csproj": {
+    "C:\\Users\\trung\\OneDrive\\Desktop\\PRN231(BL5)\\Project_ManageStorage\\backend\\ManageStorage\\ManageStorage.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Manh Lam\\Desktop\\Project_ManageStorage\\backend\\ManageStorage\\ManageStorage.csproj",
+        "projectUniqueName": "C:\\Users\\trung\\OneDrive\\Desktop\\PRN231(BL5)\\Project_ManageStorage\\backend\\ManageStorage\\ManageStorage.csproj",
         "projectName": "ManageStorage",
-        "projectPath": "C:\\Users\\Manh Lam\\Desktop\\Project_ManageStorage\\backend\\ManageStorage\\ManageStorage.csproj",
-        "packagesPath": "C:\\Users\\Manh Lam\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Manh Lam\\Desktop\\Project_ManageStorage\\backend\\ManageStorage\\obj\\",
+        "projectPath": "C:\\Users\\trung\\OneDrive\\Desktop\\PRN231(BL5)\\Project_ManageStorage\\backend\\ManageStorage\\ManageStorage.csproj",
+        "packagesPath": "C:\\Users\\trung\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\trung\\OneDrive\\Desktop\\PRN231(BL5)\\Project_ManageStorage\\backend\\ManageStorage\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Manh Lam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\trung\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -70,6 +74,10 @@
               "target": "Package",
               "version": "[6.0.0, )"
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
@@ -94,7 +102,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
