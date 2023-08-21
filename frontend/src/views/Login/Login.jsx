@@ -13,11 +13,49 @@ import {
 } from 'antd';
 import { Content } from 'antd/lib/layout/layout';
 import  logo from '../../images/logo.png';
-
-function Login(props) {
+import { login } from '../../services/authService';
+import { AuthContext } from '../../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
+const Login = () => {
     const [loading, setLoading] = useState(false);
+	const {
+		authContext: { isAuthenticated },
+		setAuthContext,
+	} = useContext(AuthContext);
+	const navigate = useNavigate();
+	const [form] = Form.useForm();
+	useEffect(() => {
+		if (isAuthenticated) {
+			navigate('/storage');
+		}
+	});
+    const onFinish = async (values) => {
+		setLoading(true);
+		login(values)
+			.then(({ data: { accessToken, role } }) => {
+				localStorage.setItem('token', accessToken);
+				localStorage.setItem('username', values.username);
+				localStorage.setItem('role', role);
+				
 
-    
+				const auth = {
+					isAuthenticated: true,
+					username: values.username,
+					role,
+				};
+
+				setAuthContext(auth);
+				message.success('Logged in successfully!', 1);
+
+				setTimeout(() => {
+					navigate('/storage');
+				}, 1000);
+			})
+			.catch((error) => {
+				message.error(error.message);
+			});
+		setLoading(false);
+	};
     return (
        <>
             <Layout>
@@ -43,8 +81,8 @@ function Login(props) {
 							</Row>
 							<Form
 								name='login'
-								//form={form}
-								//onFinish={onFinish}
+								form={form}
+								onFinish={onFinish}
 								labelAlign='left'>
 								<Form.Item
 									name='username'

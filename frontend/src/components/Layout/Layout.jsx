@@ -1,33 +1,30 @@
-import React, { useState } from 'react';
-import { Layout as LayoutAnt, Menu, theme, Button } from 'antd';
+import React, { useContext, useState } from 'react';
+import { Layout as LayoutAnt, Menu, theme ,message} from 'antd';
 import {
 	HomeOutlined,
-	FormOutlined
+	FormOutlined,
+	CaretDownOutlined
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthContext';
+import { logout } from '../../services/authService';
+
 const { Content, Header, Sider, Footer } = LayoutAnt;
 
-function getItem(label, key, icon, children) {
-	return {
-		key,
-		icon,
-		children,
-		label,
-	};
-}
+
 const items = [
 	{
 		label: <Link to='/storage'>Storage</Link>,
 		key: 'storage',
-		icon:<HomeOutlined />
+		icon: <HomeOutlined />
 	},
 	{
 		label: <Link to='/inputStorage'>Input Storage</Link>,
 		key: 'inputStorage',
-		icon:<FormOutlined />
+		icon: <FormOutlined />
 	},
 
-	//getItem('Files', '9', <FileOutlined />),
+	
 ];
 
 const Layout = ({ title, children }) => {
@@ -36,6 +33,42 @@ const Layout = ({ title, children }) => {
 	const {
 		token: { colorBgContainer },
 	} = theme.useToken();
+
+	const {
+		authContext: { username },
+	} = useContext(AuthContext);
+	const { setAuthContext } = useContext(AuthContext);
+
+	const handleLogOut = () => {
+		logout();
+		setAuthContext({
+			isAuthenticated: false,
+			username: null,
+			role: null,
+		});
+		message.success('Logged out successfully!');
+	};
+
+	const navItems = [
+		{
+			label: (
+				<>
+					{username} <CaretDownOutlined />
+				</>
+			),
+			key: 'username',
+			children: [
+				{
+					key: 'log-out',
+					label: <Link
+					  onClick={() => handleLogOut()}
+					>Logout</Link>,
+				},
+			],
+		},
+	];
+
+
 	return (
 
 
@@ -59,7 +92,9 @@ const Layout = ({ title, children }) => {
 						background: colorBgContainer,
 					}}
 				>
-
+					<div style={{float:'right',marginRight:'40px'}}>
+						<Menu mode='horizontal' items={navItems} disabledOverflow></Menu>
+					</div>
 
 				</Header>
 				<Content

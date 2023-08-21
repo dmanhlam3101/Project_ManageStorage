@@ -1,16 +1,10 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Button,
-  Cascader,
-  DatePicker,
   Form,
   Input,
-  InputNumber,
-  Radio,
   Select,
-  Switch,
   message,
-  TreeSelect,
   Typography
 } from 'antd';
 import {  useNavigate } from 'react-router-dom';
@@ -80,7 +74,7 @@ function AddProduct() {
           colon={false}
 
           style={{
-            maxWidth: 600,
+            maxWidth: 800,
             margin: '50px 350px'
           }}
         >
@@ -89,6 +83,7 @@ function AddProduct() {
           <Form.Item
            name="productName"
            label="Product Name"
+           
            rules={[
             {
               required: true,
@@ -133,9 +128,9 @@ function AddProduct() {
             <Select>
               {supplier &&
                 supplier.map((s) => (
-                  <Select.Option key={s.supplierId} value={s.supplierId}>
+                  <Select.Option key={s.SupplierId} value={s.SupplierId}>
                     <Typography.Text>
-                      {s.displayName}
+                      {s.DisplayName}
                     </Typography.Text>
                   </Select.Option>
                 ))}

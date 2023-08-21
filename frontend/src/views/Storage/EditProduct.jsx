@@ -1,16 +1,10 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Button,
-  Cascader,
-  DatePicker,
   Form,
   Input,
-  InputNumber,
-  Radio,
   Select,
-  Switch,
   message,
-  TreeSelect,
   Typography
 } from 'antd';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -143,9 +137,9 @@ function EditProduct() {
             <Select>
               {supplier &&
                 supplier.map((s) => (
-                  <Select.Option key={s.supplierId} value={s.supplierId}>
+                  <Select.Option key={s.SupplierId} value={s.SupplierId}>
                     <Typography.Text>
-                      {s.displayName}
+                      {s.DisplayName}
                     </Typography.Text>
                   </Select.Option>
                 ))}
