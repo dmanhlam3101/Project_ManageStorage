@@ -29,6 +29,13 @@ namespace ManageStorage.Controllers
             return Ok(_context.Users.ToList());
         }
 
+        [HttpGet("GetUserByUserId/{id}")]
+        [EnableQuery]
+        public IActionResult GetUserByUserId(int id)
+        {
+            return Ok(_context.Users.Where(o => o.UserId == id).ToList());
+        }
+
         [HttpPost("add")]
         public IActionResult Add(User user)
         {
@@ -74,7 +81,7 @@ namespace ManageStorage.Controllers
             }
         }
 
-        [HttpPut("delete")]
+        [HttpPut("delete/{id}")]
         public IActionResult Delete(int id)
         {
             try
