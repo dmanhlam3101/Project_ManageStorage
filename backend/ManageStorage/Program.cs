@@ -21,6 +21,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(Imapper).Assembly);
+
 builder.Services.AddControllers().AddOData(opt => opt.Select().Filter().OrderBy().Count().Expand().Select().SetMaxTop(null));
 
 builder.Services.AddAuthorization();
