@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DD2u6dMfVOQP4P3sKdpRGO2IkfeG0GrbwqmzFohBsWeCqM+rMjd6M6L6f2ejnLyThPfmaU4k68skUq/hUw0TDg==",
+  "dgSpecHash": "1mhF+TIr37mxAUcKwUGgIa04ORsfEexUOyv+8AcleTuwEIuIrrxDCxGRCnL+pnp5SzsuCtXH6i3GAyGHmzzvjQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\trung\\OneDrive\\Desktop\\PRN231(BL5)\\Project_ManageStorage\\backend\\ManageStorage\\ManageStorage.csproj",
   "expectedPackageFiles": [
@@ -49,6 +49,7 @@
     "C:\\Users\\trung\\.nuget\\packages\\microsoft.spatial\\7.16.0\\microsoft.spatial.7.16.0.nupkg.sha512",
     "C:\\Users\\trung\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\trung\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\trung\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\trung\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\trung\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "C:\\Users\\trung\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",

@@ -22,6 +22,12 @@ namespace ManageStorage.Controllers
             return Ok(_context.InputStorages.ToList());
         }
 
+        [HttpGet("GetInputByInputId/{id}")]
+        public IActionResult GetInputByInputId(int id)
+        {
+            return Ok(_context.InputStorages.Where(o => o.InputId == id).ToList());
+        }
+
         [HttpPost("add")]
         public IActionResult Add(InputStorage input)
         {
@@ -68,7 +74,7 @@ namespace ManageStorage.Controllers
             }
         }
 
-        [HttpPut("delete")]
+        [HttpPut("delete/{id}")]
         public IActionResult Delete(int id)
         {
             try

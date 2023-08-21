@@ -64,7 +64,7 @@ namespace ManageStorage.Controllers
             }
         }
 
-        [HttpPut("delete")]
+        [HttpPut("delete/{id}")]
         public IActionResult Delete(int id)
         {
             try

@@ -22,6 +22,12 @@ namespace ManageStorage.Controllers
             return Ok(_context.OutputStorages.ToList());
         }
 
+        [HttpGet("GetOutputByOutputId/{id}")]
+        public IActionResult GetOutputByOutputId(int id)
+        {
+            return Ok(_context.OutputStorages.Where(o => o.OutputId == id).ToList());
+        }
+
         [HttpPost("add")]
         public IActionResult Add(OutputStorage output)
         {
@@ -67,7 +73,7 @@ namespace ManageStorage.Controllers
             }
         }
 
-        [HttpPut("delete")]
+        [HttpPut("delete/{id}")]
         public IActionResult Delete(int id)
         {
             try

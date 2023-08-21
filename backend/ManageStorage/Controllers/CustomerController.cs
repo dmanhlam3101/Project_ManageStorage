@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace ManageStorage.Controllers
 {
@@ -19,7 +21,30 @@ namespace ManageStorage.Controllers
         [EnableQuery]
         public IActionResult List()
         {
-            return Ok(_context.Customers.ToList());
+            var jsonSettings = new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+            };
+
+            var customers = _context.Customers.Include(o => o.OutputStorages).ToList();
+            var json = JsonConvert.SerializeObject(customers, jsonSettings);
+
+            return Ok(json);
+        }
+
+        [HttpGet("GetCustomerById/{id}")]
+        public IActionResult GetCustomerById(int id)
+        {
+            var jsonSettings = new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+            };
+
+            var customers = _context.Customers.Include(o => o.OutputStorages)
+                .Where(o => o.CustomerId == id).ToList();
+
+            var json = JsonConvert.SerializeObject(customers, jsonSettings);
+            return Ok(json);
         }
 
         [HttpPost("add")]
@@ -69,7 +94,7 @@ namespace ManageStorage.Controllers
             }
         }
 
-        [HttpPut("delete")]
+        [HttpPut("delete/{id}")] 
         public IActionResult Delete(int id)
         {
             try
