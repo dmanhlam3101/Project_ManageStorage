@@ -18,10 +18,10 @@ namespace ManageStorage.Controllers
         }
 
         [HttpGet]
-        
+
         public IActionResult Storage()
         {
-            var products = _context.Products.Include(o => o.Supplier).Where(p=> p.Status != false).ToList();
+            var products = _context.Products.Include(o => o.Supplier).Where(p => p.Status != false).ToList();
             List<StorageDTO> storage = new List<StorageDTO>();
 
             foreach (var product in products)
@@ -37,7 +37,7 @@ namespace ManageStorage.Controllers
                 {
                     sumInput = (int)inputProduct.Sum(o => o.Quantity);
                 }
-                
+
                 if (outputProduct != null)
                 {
                     sumInput = (int)outputProduct.Sum(o => o.Quantity);

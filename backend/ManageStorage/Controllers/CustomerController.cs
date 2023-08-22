@@ -26,7 +26,7 @@ namespace ManageStorage.Controllers
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
             };
 
-            var customers = _context.Customers.Include(o => o.OutputStorages).ToList();
+            var customers = _context.Customers.Include(o => o.OutputStorages).Where(o => o.Status != false).ToList();
             var json = JsonConvert.SerializeObject(customers, jsonSettings);
 
             return Ok(json);
@@ -78,7 +78,7 @@ namespace ManageStorage.Controllers
                 {
                     us.DisplayName = cus.DisplayName;
                     us.Address = cus.Address;
-                    us.Phone = cus.Phone; 
+                    us.Phone = cus.Phone;
                     us.Email = cus.Email;
                     us.MoreInfo = cus.MoreInfo;
                     us.ContractDate = cus.ContractDate;
@@ -94,7 +94,7 @@ namespace ManageStorage.Controllers
             }
         }
 
-        [HttpPut("delete/{id}")] 
+        [HttpPut("delete/{id}")]
         public IActionResult Delete(int id)
         {
             try

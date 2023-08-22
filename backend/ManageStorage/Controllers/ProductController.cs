@@ -34,7 +34,8 @@ namespace ManageStorage.Controllers
 
             var product = _context.Products
                 .Include(p => p.InputStorages)
-                .Include(p => p.OutputStorages).ToList();
+                .Include(p => p.OutputStorages)
+                .Where(o => o.Status != false).ToList();
             var json = JsonConvert.SerializeObject(product, jsonSettings);
 
             return Ok(json);
@@ -73,15 +74,15 @@ namespace ManageStorage.Controllers
             {
                 productDTO.Supplier = new SupplierDTO
                 {
-                   SupplierId = product.Supplier.SupplierId,
+                    SupplierId = product.Supplier.SupplierId,
                     DisplayName = product.Supplier.DisplayName,
                 };
-            } 
+            }
             if (product.Unit != null)
             {
                 productDTO.Unit = new UnitDTO
                 {
-                   UnitId = product.Unit.UnitId,
+                    UnitId = product.Unit.UnitId,
                     UnitName = product.Unit.UnitName,
                 };
             }

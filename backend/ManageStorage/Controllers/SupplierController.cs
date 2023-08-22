@@ -26,7 +26,7 @@ namespace ManageStorage.Controllers
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
             };
 
-            var supplier = _context.Suppliers.Include(o => o.Products).ToList();
+            var supplier = _context.Suppliers.Include(o => o.Products).Where(o => o.Status != false).ToList();
             var json = JsonConvert.SerializeObject(supplier, jsonSettings);
 
             return Ok(json);

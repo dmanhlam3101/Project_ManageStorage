@@ -26,7 +26,7 @@ namespace ManageStorage.Controllers
         [EnableQuery]
         public IActionResult List()
         {
-            return Ok(_context.Users.ToList());
+            return Ok(_context.Users.Where(o => o.Status != false).ToList());
         }
 
         [HttpGet("GetUserByUserId/{id}")]
