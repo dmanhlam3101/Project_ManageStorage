@@ -11,7 +11,7 @@ const AuthContextProvider = ({ children }) => {
 		username,
 		role,
 	});
-
+	console.log(authContext)
 	const AuthContextProviderData = { authContext, setAuthContext };
 	return (
 		<AuthContext.Provider value={AuthContextProviderData}>

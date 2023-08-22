@@ -9,7 +9,7 @@ import { getListStorage, getSupllierStorage, deleteProduct } from '../../service
 import { useNavigate } from 'react-router-dom';
 import Search from 'antd/es/input/Search';
 function Storage() {
-	const navigate = useNavigate();
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [dataSuplier, setDataSuplier] = useState(null);
   const [dataSource, setDataSource] = useState([]);
@@ -35,10 +35,10 @@ function Storage() {
             unitName,
           };
         });
-         // Filter the data based on the search query
-         const filteredData = convertedData.filter((data) =>
-         data.productName.toLowerCase().includes(searchQuery.toLowerCase())
-       );
+        // Filter the data based on the search query
+        const filteredData = convertedData.filter((data) =>
+          data.productName.toLowerCase().includes(searchQuery.toLowerCase())
+        );
 
         setDataSource(filteredData);
         //setTotalElements(res.data.totalElements);
@@ -53,13 +53,12 @@ function Storage() {
   useEffect(() => {
     getData();
   }, [getData]);
-
   const [open, setOpen] = useState(false);
   const showDrawer = (record) => {
     getSupllierStorage(record.productId).then((res) => {
       const supplierData = res.data; // Assuming res.data is an object containing supplier data
       setDataSuplier(supplierData);
-
+      console.log(dataSuplier)
       setOpen(true);
     })
       .catch((error) => {
@@ -68,7 +67,7 @@ function Storage() {
 
 
   };
-  console.log(dataSuplier)
+
   const onClose = () => {
     setOpen(false);
   };
@@ -137,10 +136,10 @@ function Storage() {
       render: (_, record) => (
         <span>
           <Button
-           onClick={() =>{
-                navigate(`/storage/editProduct/${record.productId}`)
-              }} >
-            <EditOutlined/>
+            onClick={() => {
+              navigate(`/storage/editProduct/${record.productId}`)
+            }} >
+            <EditOutlined />
           </Button>
 
 
@@ -197,15 +196,15 @@ function Storage() {
     <>
       <div style={{ margin: '0px 10px' }}>
 
-        <Space> 
-        <Search
+        <Space>
+          <Search
             placeholder="Search by product name"
             onChange={(e) => setSearchQuery(e.target.value)}
             value={searchQuery}
           />
         </Space>
         <Button style={{ float: 'right', marginBottom: '15px' }} type="primary" icon={<PlusOutlined />}
-        onClick={() => navigate(`/storage/addProduct`)}
+          onClick={() => navigate(`/storage/addProduct`)}
         >
           Add Product
         </Button>
@@ -236,7 +235,7 @@ function Storage() {
         onCancel={handleCancelDelete}
         footer={null}
       >
-        <p>Do you want to delete this assignment?</p>
+        <p>Do you want to delete this product?</p>
         <Button
           type="primary"
           key='back'
@@ -248,7 +247,7 @@ function Storage() {
         <Button
           className='button-modal'
           key='submit'
-          style={{marginLeft:'10px'}}
+          style={{ marginLeft: '10px' }}
           type='default' // Set the type to "default" or "primary" or "ghost"
           onClick={handleCancelDelete}
         >

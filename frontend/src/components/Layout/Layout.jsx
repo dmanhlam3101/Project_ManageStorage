@@ -3,7 +3,8 @@ import { Layout as LayoutAnt, Menu, theme ,message} from 'antd';
 import {
 	HomeOutlined,
 	FormOutlined,
-	CaretDownOutlined
+	CaretDownOutlined,
+	UserOutlined
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
@@ -23,7 +24,11 @@ const items = [
 		key: 'inputStorage',
 		icon: <FormOutlined />
 	},
-
+	{
+		label: <Link to='/customer'>Customer</Link>,
+		key: 'customer',
+		icon: <UserOutlined />
+	},
 	
 ];
 
