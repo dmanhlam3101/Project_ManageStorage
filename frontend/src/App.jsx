@@ -8,6 +8,11 @@ import Login from './views/Login/Login';
 import Layout from './components/Layout/Layout';
 import AddProduct from './views/Storage/AddProduct';
 import AuthGuard from './Guard/AuthGuard';
+import InputStorage from './views/InputStorage/InputStorage';
+import CustomerIndex from './views/Customer/CustomerIndex';
+import EditCustomer from './views/Customer/EditCustomer';
+import AddCustomer from './views/Customer/AddCustomer';
+
 
 const allRouters = [
 	{
@@ -33,7 +38,8 @@ const allRouters = [
 		title: 'Edit Product',
 
 		
-	},{
+	},
+	{
 		path: '/storage/addProduct',
 		element: (
 
@@ -45,7 +51,50 @@ const allRouters = [
 		
 	},
 	
-	
+	{
+		path: '/inputStorage',
+		element: (
+
+					<InputStorage />
+
+		),
+		title: 'Input Storage',
+
+		
+	},
+	{
+		path: '/customer',
+		element: (
+
+					<CustomerIndex />
+
+		),
+		title: 'Customer',
+
+		
+	},
+	{
+		path: '/customer/editCustomer/:CustomerId',
+		element: (
+
+					<EditCustomer />
+
+		),
+		title: 'Edit Customer',
+
+		
+	},
+	{
+		path: '/customer/addCustomer',
+		element: (
+
+					<AddCustomer />
+
+		),
+		title: 'Add Customer',
+
+		
+	},
 ];
 function App() {
 	return (

@@ -43,7 +43,6 @@ const Login = () => {
 					username: values.username,
 					role,
 				};
-
 				setAuthContext(auth);
 				message.success('Logged in successfully!', 1);
 
