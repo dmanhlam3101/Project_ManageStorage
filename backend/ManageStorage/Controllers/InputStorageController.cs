@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace ManageStorage.Controllers
 {
@@ -19,13 +21,30 @@ namespace ManageStorage.Controllers
         [EnableQuery]
         public IActionResult List()
         {
-            return Ok(_context.InputStorages.ToList());
+            var jsonSettings = new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+            };
+
+            var input = _context.InputStorages.Include(o => o.Product).Where(o => o.Status != false).ToList();
+            var json = JsonConvert.SerializeObject(input, jsonSettings);
+
+            return Ok(json);
         }
 
         [HttpGet("GetInputByInputId/{id}")]
         public IActionResult GetInputByInputId(int id)
         {
-            return Ok(_context.InputStorages.Where(o => o.InputId == id).ToList());
+            var jsonSettings = new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+            };
+
+            var input = _context.InputStorages.Include(o => o.Product)
+                .Where(o => o.InputId == id).ToList();
+            var json = JsonConvert.SerializeObject(input, jsonSettings);
+
+            return Ok(json);
         }
 
         [HttpPost("add")]
