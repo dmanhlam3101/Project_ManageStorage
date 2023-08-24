@@ -4,6 +4,7 @@ import axiosClient from './httpCommon';
 export const getListOutputStorage = () => {
 	return axiosClient.get(`${API_URL_OutputStorage}`)
 }
+
 export const getListOutputStorageTransaction = () => {
 	return axiosClient.get(`${API_URL_OutputStorage}/getOutputTransaction`)
 }
@@ -19,3 +20,7 @@ export const editOutputStorage = (data) => {
 export const deleteOutputStorage = (id) => {
 	return axiosClient.put(`${API_URL_OutputStorage}/delete/${id}`)
 }
+export const getToday = () => {
+	return axiosClient.get(`${API_URL_OutputStorage}/todaysale`)
+}
+

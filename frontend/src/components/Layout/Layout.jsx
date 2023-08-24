@@ -3,10 +3,11 @@ import { Layout as LayoutAnt, Menu, theme, message, Button, Modal } from 'antd';
 import {
 	HomeOutlined,
 	FormOutlined,
-	CaretDownOutlined,
+	SolutionOutlined,
 	UserOutlined,
 	BarChartOutlined,
-	CarryOutOutlined
+	CarryOutOutlined,
+	TeamOutlined 
 } from '@ant-design/icons';
 import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
@@ -33,7 +34,11 @@ const items = [
 		key: 'outputStorage',
 		icon: <CarryOutOutlined />
 	},
-
+	{
+		label: <Link to='/customer'>Customer</Link>,
+		key: 'customer',
+		icon: <UserOutlined />
+	},
 	{
 		label: <Link to='/dashboard'>Dasboard</Link>,
 		key: 'dashboard',
@@ -64,10 +69,21 @@ const itemsAdmin = [
 		icon: <UserOutlined />
 	},
 	{
+		label: <Link to='/supplier'>Supplier</Link>,
+		key: 'supplier',
+		icon:<SolutionOutlined />
+	},
+	{
+		label: <Link to='/user'>User</Link>,
+		key: 'user',
+		icon:<TeamOutlined />
+	},
+	{
 		label: <Link to='/dashboard'>Dasboard</Link>,
 		key: 'dashboard',
 		icon: <BarChartOutlined />
 	},
+	
 
 ];
 

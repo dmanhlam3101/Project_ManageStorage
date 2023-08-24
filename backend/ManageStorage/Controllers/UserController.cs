@@ -1,4 +1,6 @@
-﻿using ManageStorage.Models;
+﻿using ManageStorage.DTO;
+using ManageStorage.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
@@ -12,6 +14,7 @@ namespace ManageStorage.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles ="admin")]
     public class UserController : ControllerBase
     {
         private QuanlykhoContext _context;
@@ -122,7 +125,7 @@ namespace ManageStorage.Controllers
                         new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
                         new Claim("UserId", user.UserId.ToString()),
                         new Claim("DisplayName", user.DisplayName),
-                        new Claim("Role", user.Role),
+                        new Claim(ClaimTypes.Role, user.Role),
                     };
 
                     var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
@@ -134,7 +137,15 @@ namespace ManageStorage.Controllers
                         expires: DateTime.UtcNow.AddMinutes(10),
                         signingCredentials: signIn);
 
-                    return Ok(new JwtSecurityTokenHandler().WriteToken(token));
+                    var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+
+                    var tokenResponse = new TokenResponse
+                    {
+                        AccessToken = tokenString,
+                        Role = user.Role,
+                    };
+
+                    return Ok(tokenResponse);
                 }
                 else
                 {

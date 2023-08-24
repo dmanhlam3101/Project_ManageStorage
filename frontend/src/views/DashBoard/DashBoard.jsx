@@ -14,13 +14,15 @@ import {
     ExclamationOutlined,
     PlusOutlined,
     MinusOutlined,
+    DollarOutlined,
 } from "@ant-design/icons";
 import { getListInputStorageTransaction } from '../../services/inputStorageService';
-import { getListOutputStorageTransaction } from '../../services/outputStorage';
+import { getListOutputStorageTransaction, getToday } from '../../services/outputStorage';
 function DashBoard() {
     const { Title, Text } = Typography;
 
     const [dataTransaction, setdataTransaction] = useState([])
+    const [totalToday, settotalToday] = useState(0);
     const [dataTransactionOutput, setdataTransactionOutput] = useState([])
     const totalSumOutput = dataTransactionOutput.map(item => item.priceOutputTransaction).reduce((acc, price) => acc + price, 0);
     const totalSumInput = dataTransaction.map(item => item.priceTransaction).reduce((acc, price) => acc + price, 0);
@@ -34,10 +36,17 @@ function DashBoard() {
             .catch((err) => {
                 message.error(err.message);
             });
+            getToday()
+            .then((res) => {
+                settotalToday(res.data)
+               
+            })
+            .catch((err) => {
+                message.error(err.message);
+            });
         getListOutputStorageTransaction()
             .then((res) => {
                 setdataTransactionOutput(res.data)
-                console.log(res.data)
             })
             .catch((err) => {
                 message.error(err.message);
@@ -50,10 +59,11 @@ function DashBoard() {
     const count = [
         {
             today: "Today’s Sales",
-            title: "$53,000",
+            title:"$"+ totalToday.totalToday,
             persent: "+30%",
-
+            icon:<DollarOutlined />,
             bnb: "bnb2",
+        
         },
         {
             today: "Today’s Users",
@@ -78,19 +88,7 @@ function DashBoard() {
         },
 
     ];
-    const timelineList = [
-        {
-            title: "$2,400 - Redesign store",
-            time: "09 JUN 7:20 PM",
-            color: "green",
-        },
-        {
-            title: "New order #3654323",
-            time: "08 JUN 12:20 PM",
-            color: "green",
-        },
 
-    ];
     //billing
     const calender = [
         <svg
@@ -144,7 +142,7 @@ function DashBoard() {
                                     <Col
                                         style={{ marginBottom: '15px' } }
                                     >
-                                        <Card bordered={false} className="criclebox ">
+                                        <Card bordered={false} className="criclebox " style={{ minWidth: '275px', overflow: 'auto' }}>
                                             <div className="number">
                                                 <Row align="middle" gutter={[24, 0]}>
                                                     <Col xs={18}>
@@ -201,7 +199,7 @@ function DashBoard() {
                                                 description={formattedDate}
                                             />
                                             <div className="amount">
-                                                <span className="text-success">- ${item.priceOutputTransaction}</span>
+                                                <span className="text-success">+ ${item.priceOutputTransaction}</span>
                                             </div>
                                         </List.Item>
                                     );

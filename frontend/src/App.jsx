@@ -21,6 +21,12 @@ import DashBoard from './views/DashBoard/DashBoard';
 import AdminGuard from './Guard/AdminGuard';
 import NotFound from './views/NotFound/NotFound';
 import Unthorized from './views/NotFound/Unthorized';
+import Supplier from './views/Supplier/Supplier';
+import EditSupplier from './views/Supplier/EditSupplier';
+import AddSupplier from './views/Supplier/AddSupplier';
+import User from './views/User/User';
+import AddUser from './views/User/AddUser';
+import EditUser from './views/User/EditUser';
 
 
 
@@ -28,10 +34,10 @@ const allRouters = [
 	{
 		path: '/storage',
 		element: (
-				<AdminGuard>
+				<AuthGuard>
 
 					<Storage />
-				</AdminGuard>
+				</AuthGuard>
 
 		),
 		title: 'Storage',
@@ -41,8 +47,10 @@ const allRouters = [
 	{
 		path: '/storage/editProduct/:productId',
 		element: (
+			<AuthGuard>
 
-					<EditProduct />
+				<EditProduct />
+			</AuthGuard>
 
 		),
 		title: 'Edit Product',
@@ -52,8 +60,10 @@ const allRouters = [
 	{
 		path: '/storage/addProduct',
 		element: (
+			<AuthGuard>
 
-					<AddProduct />
+				<AddProduct />
+			</AuthGuard>
 
 		),
 		title: 'Add Product',
@@ -64,8 +74,10 @@ const allRouters = [
 	{
 		path: '/inputStorage',
 		element: (
+			<AuthGuard>
 
-					<InputStorage />
+				<InputStorage />
+			</AuthGuard>
 
 		),
 		title: 'Input Storage',
@@ -75,8 +87,10 @@ const allRouters = [
 	{
 		path: '/inputStorage/add',
 		element: (
+			<AuthGuard>
 
-					<AddInputStorage />
+				<AddInputStorage />
+			</AuthGuard>
 
 		),
 		title: 'Add Input Storage',
@@ -86,8 +100,10 @@ const allRouters = [
 	{
 		path: '/inputStorage/edit/:InputId',
 		element: (
+			<AuthGuard>
 
-					<EditInputStorage />
+				<EditInputStorage />
+			</AuthGuard>
 
 		),
 		title: 'Edit Input Storage',
@@ -97,8 +113,10 @@ const allRouters = [
 	{
 		path: '/outputStorage',
 		element: (
+			<AuthGuard>
 
-					<OutputStorage />
+				<OutputStorage />
+			</AuthGuard>
 
 		),
 		title: 'Output Storage',
@@ -108,8 +126,10 @@ const allRouters = [
 	{
 		path: '/outputStorage/add',
 		element: (
+			<AuthGuard>
 
-					<AddOutputStorage />
+				<AddOutputStorage />
+			</AuthGuard>
 
 		),
 		title: 'Add Output Storage',
@@ -119,8 +139,10 @@ const allRouters = [
 	{
 		path: '/outputStorage/edit/:OutputId',
 		element: (
+			<AuthGuard>
 
-					<EditOutputStorage />
+				<EditOutputStorage />
+			</AuthGuard>
 
 		),
 		title: 'Edit Output Storage',
@@ -130,8 +152,10 @@ const allRouters = [
 	{
 		path: '/customer',
 		element: (
+			<AuthGuard>
 
-					<CustomerIndex />
+				<CustomerIndex />
+			</AuthGuard>
 
 		),
 		title: 'Customer',
@@ -141,8 +165,10 @@ const allRouters = [
 	{
 		path: '/customer/editCustomer/:CustomerId',
 		element: (
+			<AuthGuard>
 
-					<EditCustomer />
+				<EditCustomer />
+			</AuthGuard>
 
 		),
 		title: 'Edit Customer',
@@ -152,8 +178,10 @@ const allRouters = [
 	{
 		path: '/customer/addCustomer',
 		element: (
+			<AuthGuard>
 
-					<AddCustomer />
+				<AddCustomer />
+			</AuthGuard>
 
 		),
 		title: 'Add Customer',
@@ -163,15 +191,88 @@ const allRouters = [
 	{
 		path: '/dashboard',
 		element: (
+			<AuthGuard>
 
-					<DashBoard />
+				<DashBoard />
+			</AuthGuard>
 
 		),
 		title: 'Dashboard',
 
 		
 	},
-	
+	{
+		path: '/supplier',
+		element: (
+			<AdminGuard>
+
+				<Supplier />
+			</AdminGuard>
+
+		),
+		title: 'Supplier',
+
+		
+	},
+	{
+		path: '/supplier/add',
+		element: (
+			<AdminGuard>
+
+				<AddSupplier />
+			</AdminGuard>
+
+		),
+		title: 'Add Supplier',
+
+		
+	},
+	{
+		path: '/supplier/edit/:SupplierId',
+		element: (
+			<AdminGuard>
+
+				<EditSupplier />
+			</AdminGuard>
+
+		),
+		title: 'Edit Supplier',
+
+		
+	},
+	{
+		path: '/user',
+		element: (
+			<AdminGuard>
+
+				<User />
+			</AdminGuard>
+
+		),
+		title: 'User',
+	},
+	{
+		path: '/user/add',
+		element: (
+			<AdminGuard>
+
+				<AddUser />
+			</AdminGuard>
+
+		),
+		title: 'Add User',
+	},
+	{
+		path: '/user/edit/:userId',
+		element: (
+			<AdminGuard>
+
+				<EditUser />
+			</AdminGuard>
+
+		),
+		title: 'Edit User',
+	},
 ];
 function App() {
 	return (
