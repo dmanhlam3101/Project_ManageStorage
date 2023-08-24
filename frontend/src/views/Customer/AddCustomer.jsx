@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   Button,
   Form,
   Input,
-  Select,
   message,
-  Typography,
   DatePicker
 } from 'antd';
-import { useParams, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import {addCustomer} from '../../services/customerService';
 
 function AddCustomer() {

@@ -12,6 +12,9 @@ export const getSupllierStorage = (productId) => {
 export const getProductById = (id) => {
 	return axiosClient.get(`${API_URL_Product}/${id}`)
 }
+export const getProduct = () => {
+	return axiosClient.get(`${API_URL_Product}`)
+}
 export const deleteProduct = (productId) => {
 	return axiosClient.put(`${API_URL_Product}/delete/${productId}`)
 }

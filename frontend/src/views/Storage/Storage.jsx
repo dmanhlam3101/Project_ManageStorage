@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useEffect } from 'react';
-import { Drawer, Modal, Table, message, Button, Space } from 'antd';
+import { Drawer, Modal, Table, message, Button, Space, Input } from 'antd';
 import {
   EditOutlined,
   DeleteOutlined,
@@ -143,7 +143,7 @@ function Storage() {
           </Button>
 
 
-          <Button style={{ marginLeft: '10px' }} onClick={() => showModalDelete(record.productId)}>
+          <Button style={{ marginLeft: '10px' }} danger onClick={() => showModalDelete(record.productId)}>
             <DeleteOutlined />
           </Button>
 
@@ -197,7 +197,7 @@ function Storage() {
       <div style={{ margin: '0px 10px' }}>
 
         <Space>
-          <Search
+          <Input
             placeholder="Search by product name"
             onChange={(e) => setSearchQuery(e.target.value)}
             value={searchQuery}

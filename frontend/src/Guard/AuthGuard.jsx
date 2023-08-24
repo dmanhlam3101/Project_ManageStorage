@@ -10,7 +10,7 @@ const AuthGuard = ({ children }) => {
 
 	useEffect(() => {
 		if (!isAuthenticated) {
-			navigate('/');
+			navigate('/login');
 		}
 	}, [navigate, isAuthenticated]);
 	return <div>{children}</div>;
