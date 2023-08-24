@@ -1,16 +1,20 @@
 import React, { useContext, useState } from 'react';
-import { Layout as LayoutAnt, Menu, theme ,message} from 'antd';
+import { Layout as LayoutAnt, Menu, theme, message, Button, Modal } from 'antd';
 import {
 	HomeOutlined,
 	FormOutlined,
 	CaretDownOutlined,
-	UserOutlined
+	UserOutlined,
+	BarChartOutlined,
+	CarryOutOutlined
 } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
 import { logout } from '../../services/authService';
-
-const { Content, Header, Sider, Footer } = LayoutAnt;
+import logo from '../../images/logo.png';
+import LogOutConfirm from '../../views/Login/LogOutConfirm';
+import Header from '../../components/Header/Header';
+const { Content, Sider } = LayoutAnt;
 
 
 const items = [
@@ -25,23 +29,61 @@ const items = [
 		icon: <FormOutlined />
 	},
 	{
+		label: <Link to='/outputStorage'>Output Storage</Link>,
+		key: 'outputStorage',
+		icon: <CarryOutOutlined />
+	},
+
+	{
+		label: <Link to='/dashboard'>Dasboard</Link>,
+		key: 'dashboard',
+		icon: <BarChartOutlined />
+	},
+
+];
+
+const itemsAdmin = [
+	{
+		label: <Link to='/storage'>Storage</Link>,
+		key: 'storage',
+		icon: <HomeOutlined />
+	},
+	{
+		label: <Link to='/inputStorage'>Input Storage</Link>,
+		key: 'inputStorage',
+		icon: <FormOutlined />
+	},
+	{
+		label: <Link to='/outputStorage'>Output Storage</Link>,
+		key: 'outputStorage',
+		icon: <CarryOutOutlined />
+	},
+	{
 		label: <Link to='/customer'>Customer</Link>,
 		key: 'customer',
 		icon: <UserOutlined />
 	},
-	
+	{
+		label: <Link to='/dashboard'>Dasboard</Link>,
+		key: 'dashboard',
+		icon: <BarChartOutlined />
+	},
+
 ];
 
 const Layout = ({ title, children }) => {
-
+	const {
+		authContext: { role },
+	} = useContext(AuthContext);
+	const location = useLocation();
+	const selectedKey = location.pathname.split('/')[1];
+	const [logOutModalOpen, setLogOutModalOpen] = useState(false);
 	const [collapsed, setCollapsed] = useState(false);
 	const {
 		token: { colorBgContainer },
 	} = theme.useToken();
 
-	const {
-		authContext: { username },
-	} = useContext(AuthContext);
+	
 	const { setAuthContext } = useContext(AuthContext);
 
 	const handleLogOut = () => {
@@ -54,25 +96,7 @@ const Layout = ({ title, children }) => {
 		message.success('Logged out successfully!');
 	};
 
-	const navItems = [
-		{
-			label: (
-				<>
-					{username} <CaretDownOutlined />
-				</>
-			),
-			key: 'username',
-			children: [
-				{
-					key: 'log-out',
-					label: <Link
-					  onClick={() => handleLogOut()}
-					>Logout</Link>,
-				},
-			],
-		},
-	];
-
+	
 
 	return (
 
@@ -85,26 +109,28 @@ const Layout = ({ title, children }) => {
 		>
 			<Sider width={250} collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
 
-				<div className="demo-logo-vertical img-with-left-padding"  ><img width={collapsed ? '100' : '250'} src='https://www.48hourslogo.com/oss/attachments/2023/01/11/23910145547/c2e7804da10ba06f2e9a2234d32be8e2.png'></img></div>
-
-
-				<Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
-			</Sider>
-			<LayoutAnt>
-				<Header
+				<div className="demo-logo-vertical img-with-left-padding "
 					style={{
-						padding: 0,
-						background: colorBgContainer,
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
 					}}
-				>
-					<div style={{float:'right',marginRight:'40px'}}>
-						<Menu mode='horizontal' items={navItems} disabledOverflow></Menu>
-					</div>
+				><img width={collapsed ? '100' : '250'} src={logo}></img></div>
 
-				</Header>
+
+				<Menu theme="dark" 
+				defaultSelectedKeys={selectedKey} 
+				mode="inline" 
+				
+				items={role === 'admin' ? itemsAdmin : items}
+				 />
+			</Sider>		
+				<LayoutAnt>
+				<Header/>
 				<Content
 					style={{
 						margin: '0 16px',
+						height: `calc(100vh - 66px - 62px)`,
 					}}
 				>
 					<div
@@ -133,16 +159,12 @@ const Layout = ({ title, children }) => {
 							background: colorBgContainer,
 						}}
 					>
+						
+						
 						{children}
 					</div>
 				</Content>
-				<Footer
-					style={{
-						textAlign: 'center',
-					}}
-				>
-					Ant Design ©2023 Created by Ant UED
-				</Footer>
+
 			</LayoutAnt>
 		</LayoutAnt>
 

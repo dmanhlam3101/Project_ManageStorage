@@ -2,10 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import './index.css';
+import './main.css';
+import './responsive.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import AuthContextProvider from './contexts/AuthContext';
+import {AuthContextProvider} from './contexts/AuthContext';
 
 // Sử dụng CORS middleware
 

@@ -32,15 +32,35 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
 .img-with-left-padding {
   margin-top: -15px;
   margin-bottom: -10px;
 
 }
+
 .ant-menu-item {
- font-size: 15px;
+  font-size: 15px;
+}
+
+.logo-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.transactions-card {
+  height: 400px; /* Set the desired fixed height */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.transactions-card .ant-card-head {
+  position: sticky;
+  top: 0;
+  background-color: #fff; /* Adjust as needed */
+  z-index: 1;
 }

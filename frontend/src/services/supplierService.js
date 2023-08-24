@@ -1,4 +1,4 @@
-import { API_URL_Customer, API_URL_Supplier } from '../constants/configUrl';
+import { API_URL_Supplier } from '../constants/configUrl';
 import axiosClient from './httpCommon';
 
 export const getListSupplier = () => {

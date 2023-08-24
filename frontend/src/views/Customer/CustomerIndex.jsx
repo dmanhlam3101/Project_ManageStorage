@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { Drawer, Modal, Table, Button, Space ,message} from 'antd';
+import { Drawer, Modal, Table, Button, Space ,message, Input} from 'antd';
 import { getListCustomer, getListCustomerById, deleteCustomer } from '../../services/customerService';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -7,7 +7,6 @@ import {
     DeleteOutlined,
     UserAddOutlined
 } from '@ant-design/icons';
-import Search from 'antd/es/input/Search';
 function CustomerIndex() {
     const [dataSource, setDataSource] = useState([]);
     const navigate = useNavigate();
@@ -156,7 +155,7 @@ function CustomerIndex() {
                     </Button>
 
 
-                    <Button style={{ marginLeft: '10px' }} onClick={() => showModalDelete(record.CustomerId)} >
+                    <Button style={{ marginLeft: '10px' }} danger onClick={() => showModalDelete(record.CustomerId)} >
                         <DeleteOutlined  />
                     </Button>
 
@@ -185,7 +184,7 @@ function CustomerIndex() {
             <div style={{ margin: '0px 10px' }}>
 
                 <Space>
-                    <Search
+                    <Input
                         placeholder="Search by customer name"
                         onChange={(e) => setSearchQuery(e.target.value)}
                         value={searchQuery}
