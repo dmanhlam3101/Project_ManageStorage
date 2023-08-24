@@ -51,7 +51,7 @@ const Login = () => {
 				}, 1000);
 			})
 			.catch((error) => {
-				message.error(error.message);
+				message.error("Invalid username or password");
 			});
 		setLoading(false);
 	};

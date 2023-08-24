@@ -12,6 +12,9 @@ namespace ManageStorage.Mapper
             CreateMap<StorageDTO, Supplier>();
             CreateMap<ProductDTO, Supplier>();
             CreateMap<ProductDTO, Unit>();
+            CreateMap<ProductDTO, Product>();
+            CreateMap<InputTransaction, Product>();
+            CreateMap<InputStorage, InputTransaction>().ForMember(dest => dest.PriceTransaction, opt => opt.MapFrom(src => src.Quantity *src.InputPrice));
         }
     
     }

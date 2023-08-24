@@ -40,7 +40,7 @@ namespace ManageStorage.Controllers
 
                 if (outputProduct != null)
                 {
-                    sumInput = (int)outputProduct.Sum(o => o.Quantity);
+                    sumOutput = (int)outputProduct.Sum(o => o.Quantity);
                 }
 
                 StorageDTO storage1 = new StorageDTO();
