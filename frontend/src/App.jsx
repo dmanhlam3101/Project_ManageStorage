@@ -35,7 +35,6 @@ const allRouters = [
 		path: '/storage',
 		element: (
 				<AuthGuard>
-
 					<Storage />
 				</AuthGuard>
 
