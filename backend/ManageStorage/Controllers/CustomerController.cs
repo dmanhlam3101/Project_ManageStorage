@@ -25,8 +25,6 @@ namespace ManageStorage.Controllers
             {
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
             };
-    int i =0;
-    int a=9;
             var customers = _context.Customers.Include(o => o.OutputStorages).Where(o => o.Status != false).ToList();
             var json = JsonConvert.SerializeObject(customers, jsonSettings);
 
