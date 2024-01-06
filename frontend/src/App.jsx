@@ -39,7 +39,7 @@ const allRouters = [
 				</AuthGuard>
 
 		),
-		title: 'Storage',
+		title: 'Storagezzz',
 
 		
 	},
